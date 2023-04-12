@@ -1,13 +1,21 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Image } from 'react-native';
+import { styles } from '../theme/appTheme';
+import { CustomTitle } from '../components/CustomTitle';
+import { usePokemonPaginated } from '../hooks/usePokemonPaginated';
 
 
 export const HomeScreen = () => {
+
+  usePokemonPaginated();
+
   return (
-    <View>
-      <Text>
-        hello world
-      </Text>
-    </View>
+    <>
+      <Image
+        source={require('../assets/pokebola.png')}
+        style={styles.pokebolaBG}
+      />
+      <CustomTitle title="Pokedex" />
+    </>
   );
 };
