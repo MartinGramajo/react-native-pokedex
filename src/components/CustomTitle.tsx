@@ -17,6 +17,8 @@ export const CustomTitle = ({ title }: Props) => {
         ...styles.title,
         ...styles.globalMargin,
         top: top + 20,
+        marginBottom: top + 20,
+        paddingBottom: 10
       }}>
         {title}
       </Text>
