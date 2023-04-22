@@ -3,6 +3,7 @@ import ImageColors from 'react-native-image-colors';
 import { Text, TouchableOpacity, View, StyleSheet, Dimensions, Image } from 'react-native';
 import { SimplePokemon } from '../interfaces/pokemonInterfaces';
 import { FadeInImage } from './FadeInImage';
+import { useNavigation } from '@react-navigation/native';
 
 
 const windowWidth = Dimensions.get('window').width
@@ -65,10 +66,23 @@ export const PokemonCard = ({ pokemon }: Props) => {
     // getImageColors(pokemon.picture);
   }, []);
 
+  //Agregamos la navegación 
+  const navigation = useNavigation();
 
   return (
     <TouchableOpacity
       activeOpacity={0.9}
+      // IMPORTANTE: NOS FALTO ENVIAR EL TIPO;
+      // AL TIPARLO COMO SIMPLEPOKEMON EN NUESTRO NAVIGATOR
+      // TENEMOS QUE ENVIAR DONDE ESTA LA DATA DEL POKEMON es decir en la variable(pokemon)
+      // era el segundo argumento que nos falto agregar!
+      // tmb enviamos el color.
+      onPress={() => navigation.navigate('PokemonScreen',
+        // en este segundo argumento pasamos la data del pokemon y el color.
+        {
+          simplePokemon: pokemon,
+          color: bgColor
+        })}
     >
       <View style={{
         ...styles.cardContainer,
