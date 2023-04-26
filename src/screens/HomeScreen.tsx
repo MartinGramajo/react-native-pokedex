@@ -1,9 +1,9 @@
 import React from 'react';
-import { ActivityIndicator, FlatList, Image, Text, View } from 'react-native';
+import { ActivityIndicator, FlatList, Image, View } from 'react-native';
 import { styles } from '../theme/appTheme';
 import { CustomTitle } from '../components/CustomTitle';
 import { usePokemonPaginated } from '../hooks/usePokemonPaginated';
-import { FadeInImage } from '../components/FadeInImage';
+// import { FadeInImage } from '../components/FadeInImage';
 import { PokemonCard } from '../components/PokemonCard';
 
 
