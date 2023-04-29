@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, Platform } from 'react-native';
 import { styles } from '../theme/appTheme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -16,8 +16,7 @@ export const CustomTitle = ({ title }: Props) => {
       <Text style={{
         ...styles.title,
         ...styles.globalMargin,
-        top: top + 20,
-        marginBottom: top + 20,
+        marginTop: (Platform.OS === 'ios' ? top + 60 : top + 60),
         paddingBottom: 10
       }}>
         {title}

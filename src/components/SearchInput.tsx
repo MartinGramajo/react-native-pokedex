@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Platform } from 'react-native';
+import { View, StyleSheet, Platform, StyleProp, ViewStyle } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -8,9 +8,26 @@ import Icon from 'react-native-vector-icons/Ionicons';
 // tenemos que que buscar una solución para ello.
 // creamos un hook 
 
-export const SearchInput = () => {
+// Tipamos el style para solucionar el problema del notch 
+// de esta forma los pokemon al hacer scroll
+// estarán por detrás de la barra de búsqueda.
+
+// style? = primero es opcional 
+// tipo: StyleProp (al ser un generico debemos tiparlo)
+// <ViewStyle> : debemos especificar el tipo de elemento
+// para el cual estamos esperando los style.
+interface Props {
+  style?: StyleProp<ViewStyle>
+}
+
+
+
+export const SearchInput = ({ style }: Props) => {
   return (
-    <View style={styles.container}>
+    <View style={{
+      ...styles.container,
+      ...style as any
+    }}>
       <View style={styles.textBackground}>
         <TextInput
           placeholder='Buscar Pokemon'
