@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Platform, StyleProp, ViewStyle } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useDebouncedValue } from '../hooks/useDebouncedValue';
 
 //Pre carga de la información.
 // al no tener una búsqueda por nombre sino que por nombre exacto 
@@ -23,6 +24,21 @@ interface Props {
 
 
 export const SearchInput = ({ style }: Props) => {
+
+  // debemos manejar un state del input
+  const [textValue, setTextValue] = useState('');
+
+  // Utilizamos el hook useDebouncedValue()
+  const debouncedValue = useDebouncedValue(textValue);
+
+  // Para hacer la magia necesitamos otro useEffect
+  useEffect(() => {
+
+    console.log(debouncedValue)
+  }, [debouncedValue])
+
+
+
   return (
     <View style={{
       ...styles.container,
@@ -37,6 +53,10 @@ export const SearchInput = ({ style }: Props) => {
           }}
           autoCapitalize='none'
           autoCorrect={false}
+          // enlazamos el input con el state 
+          value={textValue}
+          // Function de los input para tomar los textos
+          onChangeText={setTextValue}
         />
 
         <Icon

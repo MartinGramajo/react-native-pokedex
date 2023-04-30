@@ -16,7 +16,7 @@ export const CustomTitle = ({ title }: Props) => {
       <Text style={{
         ...styles.title,
         ...styles.globalMargin,
-        marginTop: (Platform.OS === 'ios' ? top + 60 : top + 60),
+        marginTop: (Platform.OS === 'ios' ? top + 60 : top + 50),
         paddingBottom: 10
       }}>
         {title}
