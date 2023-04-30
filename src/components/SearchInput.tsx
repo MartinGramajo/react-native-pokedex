@@ -18,12 +18,14 @@ import { useDebouncedValue } from '../hooks/useDebouncedValue';
 // <ViewStyle> : debemos especificar el tipo de elemento
 // para el cual estamos esperando los style.
 interface Props {
+  // AGREGAMOS EL ondebounce
+  onDebounce: (value: string) => void;
   style?: StyleProp<ViewStyle>
 }
 
 
 
-export const SearchInput = ({ style }: Props) => {
+export const SearchInput = ({ style, onDebounce }: Props) => {
 
   // debemos manejar un state del input
   const [textValue, setTextValue] = useState('');
@@ -33,8 +35,7 @@ export const SearchInput = ({ style }: Props) => {
 
   // Para hacer la magia necesitamos otro useEffect
   useEffect(() => {
-
-    console.log(debouncedValue)
+    onDebounce(debouncedValue);
   }, [debouncedValue])
 
 
