@@ -1,9 +1,10 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Navigator } from './Navigator';
-import { SearchScreen } from '../screens/SearchScreen';
+import { Tab1 } from './Tab1';
 import { Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+import { Tab2Screen } from './Tab2';
 
 //NOTA: al implementar un Tab y tener un navigator como pantalla 
 // principal debemos mostrar el navigator.
@@ -36,7 +37,7 @@ export const Tabs = () => {
     >
       <Tab.Screen
         name="HomeScreen"
-        component={Navigator}
+        component={Tab1}
         options={{
           tabBarLabel: "listado",
           tabBarIcon: ({ color }) => (
@@ -48,8 +49,8 @@ export const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="PokemonScreen"
-        component={SearchScreen}
+        name="SearchScreen"
+        component={Tab2Screen}
         options={{
           tabBarLabel: "Busqueda",
           tabBarIcon: ({ color }) => (

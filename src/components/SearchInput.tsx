@@ -47,6 +47,7 @@ export const SearchInput = ({ style, onDebounce }: Props) => {
     }}>
       <View style={styles.textBackground}>
         <TextInput
+          keyboardType='default'
           placeholder='Buscar Pokemon'
           style={{
             ...styles.textInput,
