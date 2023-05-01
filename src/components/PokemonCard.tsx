@@ -24,6 +24,9 @@ export const PokemonCard = ({ pokemon }: Props) => {
   // Utilizamos un useRef (no dispara una re renderizacion.
   const isMounted = useRef(true);
 
+  //Agregamos la navegación 
+  const navigation = useNavigation<any>()
+
 
   // function que utilizamos en la App de peliculas. 
   // para tomar el color de la imagen.
@@ -66,8 +69,6 @@ export const PokemonCard = ({ pokemon }: Props) => {
     // getImageColors(pokemon.picture);
   }, []);
 
-  //Agregamos la navegación 
-  const navigation = useNavigation();
 
   return (
     <TouchableOpacity
@@ -77,12 +78,11 @@ export const PokemonCard = ({ pokemon }: Props) => {
       // TENEMOS QUE ENVIAR DONDE ESTA LA DATA DEL POKEMON es decir en la variable(pokemon)
       // era el segundo argumento que nos falto agregar!
       // tmb enviamos el color.
-      onPress={() => navigation.navigate('PokemonScreen',
-        // en este segundo argumento pasamos la data del pokemon y el color.
-        {
-          simplePokemon: pokemon,
-          color: bgColor
-        })}
+      onPress={() => navigation.navigate('PokemonScreen', {
+        simplePokemon: pokemon,
+        color: bgColor
+      })
+      }
     >
       <View style={{
         ...styles.cardContainer,
